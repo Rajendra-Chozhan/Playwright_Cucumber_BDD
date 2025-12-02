@@ -57,6 +57,10 @@ When('user scrolls to dynamic webtable', async ({}) => {
   await loginPage.scroll_to_dynamic_table();
 });
 
+When('user scrolls to drag and drop', async ({}) => {
+  await home.scroll_to_drag_drop_text();
+});
+
 Then('user verify the appearance of dynamic webtable', async ({}) => {
   await loginPage.verify_dynamic_table();
 });

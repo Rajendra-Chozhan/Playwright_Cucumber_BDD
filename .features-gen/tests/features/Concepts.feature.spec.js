@@ -17,6 +17,12 @@ test.describe('Different Concepts Functionality of Automation website', () => {
     await Then('user get all the rows and columns of dynamic webtable'); 
   });
 
+  test('Verify drag and drop functionality in Automation Practice site', { tag: ['@smoke', '@draganddrop'] }, async ({ Given, When, page }) => { 
+    await Given('user launches the Test Automation Practise login page', null, { page }); 
+    await When('user scrolls to drag and drop', null, { page }); 
+    await When('user performs drag and drop action', null, { page }); 
+  });
+
 });
 
 // == technical section ==
@@ -30,4 +36,5 @@ test.use({
 const bddFileData = [ // bdd-data-start
   {"pwTestLine":6,"pickleLine":4,"tags":["@smoke","@staticwebtable"],"steps":[{"pwStepLine":7,"gherkinStepLine":5,"keywordType":"Context","textWithKeyword":"Given user launches the Test Automation Practise login page","stepMatchArguments":[]},{"pwStepLine":8,"gherkinStepLine":6,"keywordType":"Action","textWithKeyword":"When user scrolls to static webtable","stepMatchArguments":[]},{"pwStepLine":9,"gherkinStepLine":7,"keywordType":"Outcome","textWithKeyword":"Then user verify the appearance of static webtable","stepMatchArguments":[]},{"pwStepLine":10,"gherkinStepLine":8,"keywordType":"Outcome","textWithKeyword":"Then user get all the rows and columns of static webtable","stepMatchArguments":[]}]},
   {"pwTestLine":13,"pickleLine":13,"tags":["@smoke","@dynamicwebtable"],"steps":[{"pwStepLine":14,"gherkinStepLine":14,"keywordType":"Context","textWithKeyword":"Given user launches the Test Automation Practise login page","stepMatchArguments":[]},{"pwStepLine":15,"gherkinStepLine":15,"keywordType":"Action","textWithKeyword":"When user scrolls to dynamic webtable","stepMatchArguments":[]},{"pwStepLine":16,"gherkinStepLine":16,"keywordType":"Outcome","textWithKeyword":"Then user verify the appearance of dynamic webtable","stepMatchArguments":[]},{"pwStepLine":17,"gherkinStepLine":17,"keywordType":"Outcome","textWithKeyword":"Then user get all the rows and columns of dynamic webtable","stepMatchArguments":[]}]},
+  {"pwTestLine":20,"pickleLine":21,"tags":["@smoke","@draganddrop"],"steps":[{"pwStepLine":21,"gherkinStepLine":22,"keywordType":"Context","textWithKeyword":"Given user launches the Test Automation Practise login page","stepMatchArguments":[]},{"pwStepLine":22,"gherkinStepLine":23,"keywordType":"Action","textWithKeyword":"When user scrolls to drag and drop","stepMatchArguments":[]},{"pwStepLine":23,"gherkinStepLine":24,"keywordType":"Action","textWithKeyword":"When user performs drag and drop action","stepMatchArguments":[]}]},
 ]; // bdd-data-end
