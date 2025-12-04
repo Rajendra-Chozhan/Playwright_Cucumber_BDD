@@ -10,6 +10,16 @@ export class HomePage {
     this.drop_element = this.page.locator('//div[contains(@id,"droppable")]');
     this.dropped_text = this.page.locator('//*[@id="droppable"]/p[contains(text(),"Dropped!")]');
     this.draganddrop_text = this.page.locator('//h2[contains(text(),"Drag and Drop")]');
+
+    this.tabs_text = this.page.locator('//h2[contains(text(),"Tabs")]');
+    this.search_section = this.page.locator('//div[contains(@class,"wikipedia-searchtable")]');
+    
+    this.search_field = this.page.locator('//input[@id="Wikipedia1_wikipedia-search-input"]');
+
+    this.popup_element = this.page.locator('//*[@id="PopUp"]');
+
+     this.searchResult = (kw) => this.page.locator(`text=${kw}`);
+
   }
 
   async drag_drop() {
@@ -22,5 +32,36 @@ export class HomePage {
 
   async scroll_to_drag_drop_text() {
     await CommonUtils.scrollToElement(this.page, this.draganddrop_text);
+  }
+
+
+  
+   async verifyPopupElement() {    
+      await CommonUtils.scrollToElement(this.page, this.popup_element);
+       await this.popup_element.waitFor({ state: 'visible' });  
+    
+  }
+
+
+   async click_popup_element() {    
+      await this.popup_element.click();
+    
+  }
+
+   async verify_Tabs() {    
+    await this.tabs_text.waitFor({ state: 'visible' });
+    await this.search_section.waitFor({ state: 'visible' });    
+    
+  }
+
+  async enter_search_term(searchterm) {
+    await this.search_field.fill(searchterm);
+    await this.search_field.press('Enter');
+  }
+
+   async clickSearchResult(keyword) {
+    const item = this.page.locator(`text=${keyword}`);
+    await item.waitFor();
+    await item.click();     // this click triggers new tab
   }
 }

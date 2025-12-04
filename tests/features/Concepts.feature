@@ -22,6 +22,31 @@ Feature: Different Concepts Functionality of Automation website
     Given user launches the Test Automation Practise login page
     When user scrolls to drag and drop
     When user performs drag and drop action
+
+
+
+    
+  @smoke @Tabs
+  Scenario: Validate the Tabs functionality in Automation Practice site
+    Given user launches the Test Automation Practise login page
+    When user verify appearance of Tabs section
+    When user searches for "<searchTerm>"
+   Then user selects search result "<resultKeyword>"
+     Then user verifies new tab title contains "<resultKeyword>"
+      
    
-   
-   
+   Examples:
+  | searchTerm          | resultKeyword                      |
+  | Tamil Nadu          | Tamil Nadu Premier League          |
+
+
+
+  
+    
+  @smoke @popupwindow
+  Scenario: Validate the Popup functionality in Automation Practice site
+    Given user launches the Test Automation Practise login page
+    When user verify appearance of Popup section
+    Then user clicks on Popup section and moves to popup window
+
+  

@@ -20,8 +20,35 @@ export default defineConfig({
   },
 
   projects: [
-    { name: 'chrome', use: { ...devices['Desktop Chrome'] } },
-    { name: 'webkit',   use: { ...devices['Desktop Safari'] } },
-    { name: 'edge',     use: { ...devices['Desktop Edge'], channel: 'msedge' } },
+    {
+      name: 'chrome',
+      use: {
+        browserName: 'chromium',
+        channel: 'chrome',
+        viewport: null,                     // maximize the viewport
+        // remove deviceScaleFactor — it conflicts with viewport: null
+        launchOptions: {
+          args: ['--start-maximized'],     // opens the window maximized on OS level
+        },
+      },
+    },
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari'],       // keep device profile for WebKit
+        // note: Desktop Safari device has fixed viewport & deviceScaleFactor
+      },
+    },
+    {
+      name: 'edge',
+      use: {
+        browserName: 'chromium',
+        channel: 'msedge',
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+        },
+      },
+    },
   ],
 });
